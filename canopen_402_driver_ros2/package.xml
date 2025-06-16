@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>canopen_402_driver_ros2</name>
+  <version>0.0.1</version>
+  <description>ROS 2 node for CiA 402 CANopen driver</description>
+  <maintainer email="dev@example.com">Developer</maintainer>
+  <license>Apache License 2.0</license> <!-- Or your preferred license -->
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>canopen</depend> <!-- python-canopen library -->
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>canopen_interfaces</depend> <!-- For COTargetDouble, if used -->
+  <!-- Assuming canopen_402_driver_py is in the same workspace or python path -->
+  <!-- No explicit <depend> needed here if it's not a separate ROS package -->
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

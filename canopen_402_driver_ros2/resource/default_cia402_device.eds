@@ -1,0 +1,160 @@
+[FileInfo]
+FileName=default_cia402_device.eds
+FileVersion=1
+FileRevision=1
+Description=A minimal default EDS for CiA402 ROS2 node testing.
+
+[DeviceInfo]
+VendorName=ROS 2 TestSuite
+ProductCode=0x0000ROSY
+RevisionNumber=0x00000001
+SerialNumber=0x00000000
+DeviceProfileName=CiA 402 Drive (DS402)
+
+BaudRate_1000=0
+BaudRate_500=1
+BaudRate_250=1
+BaudRate_125=1
+
+[MandatoryObjects]
+NumberOfObjects=2
+Object1=0x1000 ; Device Type
+Object2=0x1001 ; Error Register
+
+[OptionalObjects]
+NumberOfObjects=15
+Object1=0x1018 ; Identity Object
+Object2=0x6040 ; Controlword
+Object3=0x6041 ; Statusword
+Object4=0x6060 ; Modes of operation
+Object5=0x6061 ; Modes of operation display
+Object6=0x6064 ; Position actual value
+Object7=0x606C ; Velocity actual value
+Object8=0x6077 ; Torque actual value
+Object9=0x607A ; Target position
+Object10=0x6081 ; Profile velocity
+Object11=0x6083 ; Profile acceleration
+Object12=0x6084 ; Profile deceleration
+Object13=0x60FF ; Target velocity (PV mode)
+Object14=0x6502 ; Supported drive modes
+Object15=0x60FD ; Digital Inputs
+
+[0x1000]
+ParameterName=Device Type
+ObjectType=0x07 ; VARIABLE
+DataType=0x0007 ; UNSIGNED32
+AccessType=ro
+DefaultValue=0x00020192 ; CiA 402 Drive Profile (0x0192 = 402d) + Device (0x0002)
+
+[0x1001]
+ParameterName=Error Register
+ObjectType=0x07
+DataType=0x0005 ; UNSIGNED8
+AccessType=ro
+DefaultValue=0x00
+
+[0x1018]
+ParameterName=Identity Object
+ObjectType=0x09 ; RECORD
+SubNumber=1
+SubName1=Vendor-ID
+[0x1018sub1]
+ParameterName=Vendor-ID
+ObjectType=0x07
+DataType=0x0007 ; UNSIGNED32
+AccessType=ro
+DefaultValue=0x0000ABCD
+
+[0x6040]
+ParameterName=Controlword
+ObjectType=0x07
+DataType=0x0006 ; UNSIGNED16
+AccessType=rw
+PDOMapping=1
+[0x6041]
+ParameterName=Statusword
+ObjectType=0x07
+DataType=0x0006 ; UNSIGNED16
+AccessType=ro
+PDOMapping=1
+[0x6060]
+ParameterName=Modes of operation
+ObjectType=0x07
+DataType=0x0003 ; INTEGER8
+AccessType=rw
+PDOMapping=1
+DefaultValue=0
+[0x6061]
+ParameterName=Modes of operation display
+ObjectType=0x07
+DataType=0x0003 ; INTEGER8
+AccessType=ro
+PDOMapping=1
+DefaultValue=0
+[0x6064]
+ParameterName=Position actual value
+ObjectType=0x07
+DataType=0x0009 ; INTEGER32
+AccessType=ro
+PDOMapping=1
+DefaultValue=0
+[0x606C]
+ParameterName=Velocity actual value
+ObjectType=0x07
+DataType=0x0009 ; INTEGER32
+AccessType=ro
+PDOMapping=1
+DefaultValue=0
+[0x6077]
+ParameterName=Torque actual value
+ObjectType=0x07
+DataType=0x0004 ; INTEGER16
+AccessType=ro
+PDOMapping=1
+DefaultValue=0
+[0x607A]
+ParameterName=Target position
+ObjectType=0x07
+DataType=0x0009 ; INTEGER32
+AccessType=rw
+PDOMapping=1
+DefaultValue=0
+[0x6081]
+ParameterName=Profile velocity
+ObjectType=0x07
+DataType=0x0007 ; UNSIGNED32
+AccessType=rw
+PDOMapping=1
+DefaultValue=0
+[0x6083]
+ParameterName=Profile acceleration
+ObjectType=0x07
+DataType=0x0007 ; UNSIGNED32
+AccessType=rw
+DefaultValue=0
+[0x6084]
+ParameterName=Profile deceleration
+ObjectType=0x07
+DataType=0x0007 ; UNSIGNED32
+AccessType=rw
+DefaultValue=0
+[0x60FF]
+ParameterName=Target velocity
+ObjectType=0x07
+DataType=0x0009 ; INTEGER32
+AccessType=rw
+PDOMapping=1
+DefaultValue=0
+[0x6502]
+ParameterName=Supported drive modes
+ObjectType=0x07
+DataType=0x0007 ; UNSIGNED32 (Bitfield)
+AccessType=ro
+DefaultValue=0x00000025 ; Supports modes 1(PP), 3(PV), 6(HM) (binary ...00100101)
+[0x60FD]
+ParameterName=Digital Inputs
+ObjectType=0x07
+DataType=0x0007 ; UNSIGNED32
+AccessType=ro
+PDOMapping=1
+DefaultValue=0
